@@ -1,3 +1,4 @@
+const errorHandler = require('./middleware/error');
 const bootcamps = require('./routes/bootcamps');
 const connectDB = require('./config/db');
 const express = require('express');
@@ -23,6 +24,8 @@ if (process.env.NODE_ENV === 'development') {
 
 // Mount routers
 app.use('/api/v1/bootcamps', bootcamps);
+
+app.use(errorHandler);
 
 const server = app.listen(
     PORT,
